@@ -1,0 +1,8 @@
+.screen {
+	position: relative;
+	display: block;
+	height: 400px;
+	width: 400px;
+	background: url("../img/pallet_town.png") top left no-repeat;
+	background-size: 400px;
+}
