@@ -1,3 +1,15 @@
+Array.prototype.random = function() {
+	var counter = this.length, temp, index;
+	while (counter > 0) {
+		index = Math.floor(Math.random() * counter);
+	    counter--;
+		temp = this[counter];
+		this[counter] = this[index];
+		this[index] = temp;
+	}
+	return this[0];
+}
+
 Object.prototype.activate = function(key) {
 	for (var i in this) {
 		if (this.hasOwnProperty(i)) {

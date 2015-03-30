@@ -60,7 +60,9 @@ var Keyboard = function() {
 			case "START":
 				if (ctx === "roam") {
 					this.context.activate("menu")
+					Game.screen.showPauseMenu();
 				} else if (ctx === "menu") {
+					Game.screen.hidePauseMenu();
 					this.context.activate("roam")
 				}
 			break;

@@ -27,6 +27,11 @@ var Sprite = function() {
 		return tile.match(/f|t|g|m/);
 	}
 
+	this.isGrassy = function(x, y) {
+		var tile = Game.screen.currentMap.collision_matrix[y][x];
+		return tile.match(/g|m/);	
+	}
+
 	this.Walk = function(direction) {
 		this.$el.removeClass("(walking|facing)-(right|left|up|down)");
 		this.$el.addClass("facing-" + direction.toLowerCase());
@@ -41,6 +46,9 @@ var Sprite = function() {
 			this.setPosition(x, y);
 			this.$el.removeClass("walking-(right|left|up|down)");
 			this.$el.addClass("walking-" + direction.toLowerCase());
+			if (this.isGrassy(x, y) && Game.roll(Game.screen.currentMap.battleOdds)) {
+				Game.battle.startBattle();
+			}
 		}
 	}
 
@@ -85,8 +93,12 @@ var Sprite = function() {
 		for (var i = 0; i < Game.screen.currentMap.events.length; i++) {
 			var e = Game.screen.currentMap.events[i];
 			if (e.coordinates.x === x && e.coordinates.y === y) {
-				Game.keyboard.context.activate("message");
-				Game.screen.showMessage(e.content);
+				switch (e.type) {
+					case "message":
+						Game.keyboard.context.activate("message");
+						Game.screen.showMessage(e.content);
+					break;
+				}
 			}
 		}
 	}
