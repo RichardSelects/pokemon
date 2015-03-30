@@ -14,6 +14,7 @@ var Keyboard = function() {
 	};
 
 	this.context = {
+		"message": false,
 		"menu": false,
 		"roam": true,
 		"map": false,
@@ -78,11 +79,31 @@ var Keyboard = function() {
 					Game.player.Walk(button)
 				}
 			break;
+			case "A":
+				switch (ctx) {
+					case "message":
+						Game.screen.hideMessgae();
+					break;
+					case "roam":
+						Game.player.interact();
+					break;
+				}
+			break;
+			case "B":
+				case "message":
+					Game.screen.hideMessgae();
+				break;
+			break;
 		}
 	}
 
 	this.clearAction = function(e) {
-
+		var ctx = this.getContext();
+		switch (ctx) {
+			case "roam":
+				Game.player.stopWalking();
+			break;
+		}
 	}
 
 	this.init();

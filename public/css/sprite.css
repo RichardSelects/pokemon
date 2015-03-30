@@ -4,7 +4,7 @@
 	height: 20px;
 	width: 20px;
 	background: url("../img/player.gif");
-	transition: left .5s, top .5s;
+	transition: left .1s, top .1s;
 	transition-timing-function: linear;
 }
 
@@ -14,27 +14,27 @@
 .player.facing-down { background-position: 0px -20px; }
 
 .player.walking-right {
-	-webkit-animation: walkingRight 1s infinite steps(1);
-	   -moz-animation: walkingRight 1s infinite steps(1);
-	        animation: walkingRight 1s infinite steps(1);
+	-webkit-animation: walkingRight .3s infinite steps(1);
+	   -moz-animation: walkingRight .3s infinite steps(1);
+	        animation: walkingRight .3s infinite steps(1);
 }
 
 .player.walking-left {
-	-webkit-animation: walkingLeft 1s infinite steps(1);
-	   -moz-animation: walkingLeft 1s infinite steps(1);
-	        animation: walkingLeft 1s infinite steps(1);
+	-webkit-animation: walkingLeft .3s infinite steps(1);
+	   -moz-animation: walkingLeft .3s infinite steps(1);
+	        animation: walkingLeft .3s infinite steps(1);
 }
 
 .player.walking-up {
-	-webkit-animation: walkingUp 1s infinite steps(1);
-	   -moz-animation: walkingUp 1s infinite steps(1);
-	        animation: walkingUp 1s infinite steps(1);
+	-webkit-animation: walkingUp .4s infinite steps(1);
+	   -moz-animation: walkingUp .4s infinite steps(1);
+	        animation: walkingUp .4s infinite steps(1);
 }
 
 .player.walking-down {
-	-webkit-animation: walkingDown 1s infinite steps(1);
-	   -moz-animation: walkingDown 1s infinite steps(1);
-	        animation: walkingDown 1s infinite steps(1);
+	-webkit-animation: walkingDown .4s infinite steps(1);
+	   -moz-animation: walkingDown .4s infinite steps(1);
+	        animation: walkingDown .4s infinite steps(1);
 }
 
 @-webkit-keyframes walkingRight {
