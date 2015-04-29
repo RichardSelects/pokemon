@@ -33,9 +33,15 @@ Element.prototype.addClass = function(c) {
 		c = (this.className != "") ? " " + c : c ;
 		this.className += c;
 	}
+	this.offsetHeight;
 }
 
 Element.prototype.removeClass = function(c) {
 	var pattern = new RegExp(c, "g");
 	this.className = this.className.replace(pattern, "").trim().replace(/\s{2,}/, " ");
+	this.offsetHeight;
+}
+
+String.prototype.pluralize = function() {
+	return (this.slice(-1) !== "s") ? this + "s" : this ;
 }

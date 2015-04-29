@@ -1,11 +1,25 @@
 .screen {
 	position: relative;
 	display: block;
-	height: 360px;
-	width: 400px;
-	background: url("../img/pallet_town.png") top left no-repeat;
-	background-size: 400px 360px;
+	height: 320px;
+	width: 320px;
+	background-color: #000000;
+	background-repeat: no-repeat;
 	font-family: "Courier", monospace;
+	overflow: hidden;
+	-webkit-transition: background-position .1s;
+	   -moz-transition: background-position .1s;
+	    -ms-transition: background-position .1s;
+	     -o-transition: background-position .1s;
+			transition: background-position .1s;
+}
+
+.screen.instant {
+	-webkit-transition-duration: 0s !important;
+	   -moz-transition-duration: 0s !important;
+	    -ms-transition-duration: 0s !important;
+	     -o-transition-duration: 0s !important;
+			transition-duration: 0s !important;
 }
 
 .message {
@@ -42,6 +56,29 @@
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
+}
+
+#transition {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #000000;
+	opacity: 0;
+	transition: opacity .5s;
+	z-index: 100;
+}
+
+#transition.in {
+	z-index: 100;
+	opacity: 1;
+}
+
+#transition.out {
+	z-index: 1;
+	opacity: 0;
 }
 
 #battle {

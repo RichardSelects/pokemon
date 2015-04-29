@@ -14,9 +14,10 @@
 	<body>
 		
     <!-- Javascript -->
+    <script type="text/javascript" src="public/game/maps.js"></script>
+
     <script type="text/javascript" src="public/js/Core.js"></script>
     <script type="text/javascript" src="public/js/Sprite.js"></script>
-    <script type="text/javascript" src="public/js/maps.js"></script>
     <script type="text/javascript" src="public/js/Screen.js"></script>
     <script type="text/javascript" src="public/js/Keyboard.js"></script>
     <script type="text/javascript" src="public/js/Battle.js"></script>

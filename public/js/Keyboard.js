@@ -21,6 +21,8 @@ var Keyboard = function() {
 		"battle": false,
 	};
 
+	this.listen = true;
+
 	this.init = function() {
 		this.bindEvents();
 	}
@@ -49,7 +51,7 @@ var Keyboard = function() {
 
 	this.keyPress = function(e) {
 		var map = keyMap.invert();
-		if (typeof map[e.keyCode] != 'undefined') {
+		if (typeof map[e.keyCode] != 'undefined' && this.listen === true) {
 			this.buttonPress(map[e.keyCode]);
 		}
 	}
@@ -68,9 +70,9 @@ var Keyboard = function() {
 			break;
 			case "SELECT":
 				if (ctx === "roam") {
-					this.context.activate("map");
+					//this.context.activate("map");
 				} else if (ctx === "map") {
-					this.context.activate("roam");
+					//this.context.activate("roam");
 				}
 			break;
 			case "UP":
@@ -100,11 +102,13 @@ var Keyboard = function() {
 	}
 
 	this.clearAction = function(e) {
-		var ctx = this.getContext();
-		switch (ctx) {
-			case "roam":
-				Game.player.stopWalking();
-			break;
+		if (this.listen === true) {
+			var ctx = this.getContext();
+			switch (ctx) {
+				case "roam":
+					Game.player.stopWalking();
+				break;
+			}
 		}
 	}
 

@@ -4,8 +4,24 @@
 	height: 20px;
 	width: 20px;
 	background: url("../img/player.gif");
-	transition: left .1s, top .1s;
-	transition-timing-function: linear;
+	-webkit-transition: left .1s, top .1s;
+	   -moz-transition: left .1s, top .1s;
+	    -ms-transition: left .1s, top .1s;
+	     -o-transition: left .1s, top .1s;
+			transition: left .1s, top .1s;
+	-webkit-transition-timing-function: linear;
+	   -moz-transition-timing-function: linear;
+	    -ms-transition-timing-function: linear;
+	     -o-transition-timing-function: linear;
+			transition-timing-function: linear;
+}
+
+.player.instant {
+	-webkit-transition-duration: 0s !important;
+	   -moz-transition-duration: 0s !important;
+	    -ms-transition-duration: 0s !important;
+	     -o-transition-duration: 0s !important;
+			transition-duration: 0s !important;
 }
 
 .player.facing-right { background-position: 0px 0px; }
