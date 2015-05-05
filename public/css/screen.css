@@ -7,11 +7,11 @@
 	background-repeat: no-repeat;
 	font-family: "Courier", monospace;
 	overflow: hidden;
-	-webkit-transition: background-position .1s;
-	   -moz-transition: background-position .1s;
-	    -ms-transition: background-position .1s;
-	     -o-transition: background-position .1s;
-			transition: background-position .1s;
+	-webkit-transition: background-position .2s;
+	   -moz-transition: background-position .2s;
+	    -ms-transition: background-position .2s;
+	     -o-transition: background-position .2s;
+			transition: background-position .2s;
 }
 
 .screen.instant {

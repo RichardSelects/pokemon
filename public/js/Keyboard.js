@@ -80,7 +80,7 @@ var Keyboard = function() {
 			case "DOWN":
 			case "LEFT":
 				if (ctx === "roam") {
-					Game.player.Walk(button)
+					Game.player.Walk(button);
 				}
 			break;
 			case "A":

@@ -1,3 +1,4 @@
+// Array extensions
 Array.prototype.random = function() {
 	var counter = this.length, temp, index;
 	while (counter > 0) {
@@ -10,6 +11,8 @@ Array.prototype.random = function() {
 	return this[0];
 }
 
+
+// Object extensions
 Object.prototype.activate = function(key) {
 	for (var i in this) {
 		if (this.hasOwnProperty(i)) {
@@ -28,6 +31,7 @@ Object.prototype.invert = function() {
 	return new_object;
 }
 
+// Element extensions
 Element.prototype.addClass = function(c) {
 	if ( ! this.className.match(c)) {
 		c = (this.className != "") ? " " + c : c ;
@@ -42,6 +46,11 @@ Element.prototype.removeClass = function(c) {
 	this.offsetHeight;
 }
 
+Element.prototype.hasClass = function(c) {
+	return (this.className.match(c) == null) ? false : true ;
+}
+
+// String extensions
 String.prototype.pluralize = function() {
 	return (this.slice(-1) !== "s") ? this + "s" : this ;
 }

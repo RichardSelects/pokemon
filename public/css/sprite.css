@@ -54,15 +54,15 @@
 }
 
 @-webkit-keyframes walkingRight {
-	0% { background-position: 0px 0px; }
-	50% { background-position: -20px 0px; }
-	100% { background-position: 0px 0px; }
+	0% { background-position: -20px 0px; }
+	50% { background-position: 0px 0px; }
+	100% { background-position: -20px 0px; }
 }
 
 @-webkit-keyframes walkingLeft {
-	0% { background-position: -40px 0px; }
-	50% { background-position: -60px 0px; }
-	100% { background-position: -40px 0px; }
+	0% { background-position: -60px 0px; }
+	50% { background-position: -40px 0px; }
+	100% { background-position: -60px 0px; }
 }
 
 @-webkit-keyframes walkingUp {
