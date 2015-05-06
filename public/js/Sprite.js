@@ -16,7 +16,9 @@ var Sprite = function() {
 	}
 
 	this.setFacing = function(direction) {
-		this.facing = direction.toLowerCase();
+		var dir = direction.toLowerCase();
+		this.facing = dir;
+		this.$el.addClass("facing-" + dir);
 	}
 
 	this.setPosition = function(x, y) {

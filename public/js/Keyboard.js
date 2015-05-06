@@ -21,7 +21,15 @@ var Keyboard = function() {
 		"battle": false,
 	};
 
-	this.listen = true;
+	this.listening = true;
+
+	this.listen = function(listen) {
+		this.listening = listen;
+	}
+
+	this.isListening = function() {
+		return this.listening;
+	}
 
 	this.init = function() {
 		this.bindEvents();
@@ -51,7 +59,7 @@ var Keyboard = function() {
 
 	this.keyPress = function(e) {
 		var map = keyMap.invert();
-		if (typeof map[e.keyCode] != 'undefined' && this.listen === true) {
+		if (typeof map[e.keyCode] != 'undefined' && this.isListening()) {
 			this.buttonPress(map[e.keyCode]);
 		}
 	}
@@ -102,7 +110,7 @@ var Keyboard = function() {
 	}
 
 	this.clearAction = function(e) {
-		if (this.listen === true) {
+		if (this.isListening()) {
 			var ctx = this.getContext();
 			switch (ctx) {
 				case "roam":

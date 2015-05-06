@@ -69,10 +69,12 @@ var Screen = function(maps) {
 		var self = this,
 			x = this.onScreenPositionX(exit.destination.coordinates.x),
 			y = this.onScreenPositionY(exit.destination.coordinates.y);
+		Game.keyboard.listen(false);
 		this.fadeToBlack(function() {
+			Game.player.stopWalking();
+			Game.player.setPosition(exit.destination.coordinates.x, exit.destination.coordinates.y);
 			self.render(exit.destination.map);
 			self.scrollTo(exit.destination.coordinates.x, exit.destination.coordinates.y, true);
-			Game.player.setPosition(exit.destination.coordinates.x, exit.destination.coordinates.y);
 		});
 	}
 
@@ -86,16 +88,18 @@ var Screen = function(maps) {
 
 	this.fadeToBlack = function(callback) {
 		var self = this;
-		Game.keyboard.listen = false;
-		this.$transition.className = "in";
+		Game.keyboard.listen(false);
+		this.$transition.removeClass("out");
+		this.$transition.addClass("in");
 		setTimeout(function() {
 			if (typeof callback == "function") {
 				callback();
 			}
 			setTimeout(function() {
-				self.$transition.className = "out";
-				Game.keyboard.listen = true;
-			}, 100);
+				self.$transition.removeClass("in");
+				self.$transition.addClass("out");
+				Game.keyboard.listen(true);
+			}, 200);
 		}, 500);
 	}
 
