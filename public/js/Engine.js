@@ -3,7 +3,8 @@ var Engine = function() {
 	this.screen = new Screen(maps);
 	this.player = new Sprite();
 	this.keyboard = new Keyboard();
-	this.battle = new Battle();
+	this.events = new Events();
+	//this.battle = new Battle();
 
 	this.init = function() {
 		this.screen.init();

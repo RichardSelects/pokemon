@@ -54,7 +54,7 @@ var Sprite = function() {
 	}
 
 	this.isExit = function(x, y) {
-		return this.find("exit", x, y);
+		return Game.events.find("exit", x, y);
 	}
 
 	this.Walk = function(direction) {
@@ -96,12 +96,7 @@ var Sprite = function() {
 		var facing = this.getDirection(),
 			e = this.find("event", facing.x, facing.y);
 		if (e !== false) {
-			switch (e.type) {
-				case "message":
-					Game.keyboard.context.activate("message");
-					Game.screen.showMessage(e.content);
-				break;
-			}
+			Game.events.do(e);
 		}
 	}
 

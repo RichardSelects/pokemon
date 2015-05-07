@@ -39,6 +39,7 @@ var Screen = function(maps) {
 			console.error("Map not found!");
 		}
 		this.currentMap = this.maps[map];
+		Game.events.set(this.maps[map].events);
 		this.$el.style.backgroundImage = 'url("' + this.maps_dir + this.currentMap.image + '")';
 		this.$el.style.backgroundSize = (this.currentMap.dimensions.width * this.dimensions.tile) + "px " + (this.currentMap.dimensions.height * this.dimensions.tile) + "px";
 		if (typeof this.currentMap.start_position != "undefined") {
@@ -63,6 +64,11 @@ var Screen = function(maps) {
 		if (instant == true) this.$el.addClass("instant");
 		this.$el.style.backgroundPosition = x + "px " + y + "px";
 		if (instant == true) this.$el.removeClass("instant");
+	}
+
+	this.isWalkable = function(x, y) {
+		var tile = this.currentMap.collision_matrix[y][x];
+		return (tile == "w");
 	}
 
 	this.exit = function(exit) {
@@ -99,6 +105,7 @@ var Screen = function(maps) {
 				self.$transition.removeClass("in");
 				self.$transition.addClass("out");
 				Game.keyboard.listen(true);
+
 			}, 200);
 		}, 500);
 	}

@@ -52,5 +52,6 @@ Element.prototype.hasClass = function(c) {
 
 // String extensions
 String.prototype.pluralize = function() {
-	return (this.slice(-1) !== "s") ? this + "s" : this ;
+	var str = (this.slice(-1) !== "s") ? this + "s" : this ;
+	return str.toString();
 }
