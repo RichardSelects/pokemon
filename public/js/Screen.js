@@ -71,6 +71,10 @@ var Screen = function(maps) {
 		return (tile == "w");
 	}
 
+	this.isExit = function(x, y) {
+		return Game.events.findByType("exit", x, y);
+	}
+
 	this.exit = function(exit) {
 		var self = this,
 			x = this.onScreenPositionX(exit.destination.coordinates.x),

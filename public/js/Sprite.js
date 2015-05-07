@@ -12,7 +12,7 @@ var Sprite = function() {
 		this.$el = Game.screen.newDiv({id: "player", class: "player facing-down"});
 		Game.screen.addToScreen(this.$el);
 		this.setPosition(Game.screen.currentMap.start_position.x, Game.screen.currentMap.start_position.y);
-		this.setScreenPosition(Math.round(Game.screen.dimensions.width / 2), Math.round(Game.screen.dimensions.height / 2));
+		this.setScreenPosition(Math.round(Game.screen.dimensions.width / 2), Math.round(Game.screen.dimensions.height / 2), true);
 	}
 
 	this.setFacing = function(direction) {
@@ -36,34 +36,13 @@ var Sprite = function() {
 	this.getX = function() { return this.x; }
 	this.getY = function() { return this.y; }
 
-	this.find = function(type, x, y) {
-		type = type.pluralize();
-		for (var i = 0; i < Game.screen.currentMap[type].length; i++) {
-			var e = Game.screen.currentMap[type][i];
-			if (e.coordinates.x === x && e.coordinates.y === y)
-			{
-				return e;
-			}
-		}
-		return false;
-	}
-
-	this.isWalkable = function(x, y) {
-		var tile = Game.screen.currentMap.collision_matrix[y][x];
-		return (tile == "w");
-	}
-
-	this.isExit = function(x, y) {
-		return Game.events.find("exit", x, y);
-	}
-
 	this.Walk = function(direction) {
 		var x = (direction == "RIGHT" || direction == "LEFT") ? (direction == "RIGHT") ? this.getX() + 1 : this.getX() - 1 : this.getX() ,
 			y = (direction == "UP" || direction == "DOWN") ? (direction == "UP") ? this.getY() - 1 : this.getY() + 1 : this.getY() ;
 		this.setFacing(direction);
-		if (exit = this.isExit(x, y)) {
+		if (exit = Game.screen.isExit(x, y)) {
 			Game.screen.exit(exit);
-		} else if (this.isWalkable(x, y)) {
+		} else if (Game.screen.isWalkable(x, y)) {
 			this.setPosition(x, y);
 			Game.screen.scroll(direction);
 			if ( ! this.$el.hasClass("walking-" + direction.toLowerCase())) {
@@ -94,7 +73,7 @@ var Sprite = function() {
 
 	this.interact = function() {
 		var facing = this.getDirection(),
-			e = this.find("event", facing.x, facing.y);
+			e = Game.events.findByMethod("interact", facing.x, facing.y);
 		if (e !== false) {
 			Game.events.do(e);
 		}

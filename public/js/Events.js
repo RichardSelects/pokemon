@@ -6,15 +6,26 @@ var Events = function() {
 		this.events = events;
 	}
 
-	this.find = function(type, x, y) {
+	this.findByType = function(type, x, y) {
 		for (var i = 0; i < this.events.length; i++) {
 			var e = this.events[i];
-			if (e.type == type && e.coordinates.x === x && e.coordinates.y === y)
+			if (type == e.type && e.coordinates.x === x && e.coordinates.y === y)
 			{
 				return e;
 			}
 		}
 		return false;
+	}
+
+	this.findByMethod = function(method, x, y) {
+		for (var i = 0; i < this.events.length; i++) {
+			var e = this.events[i];
+			if (method == e.method && e.coordinates.x === x && e.coordinates.y === y)
+			{
+				return e;
+			}
+		}
+		return false;	
 	}
 
 	this.findById = function(id) {
